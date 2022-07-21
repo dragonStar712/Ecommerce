@@ -1,7 +1,7 @@
 // import {combineReducers, applyMiddleware} from "redux"
 // import thunk from "redux-thunk"
 import { configureStore } from '@reduxjs/toolkit';
-import { productReducer } from "./reducers/productReducer";
+import { productDetailsReducer, productReducer } from "./reducers/productReducer";
 
 // const reducer = combineReducers({
 //     products : productReducer,
@@ -14,6 +14,7 @@ import { productReducer } from "./reducers/productReducer";
 const store = configureStore({
     reducer : {
         products : productReducer,
+        productDetails : productDetailsReducer,
         
     },
 })
