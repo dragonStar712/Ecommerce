@@ -1,2 +1,3 @@
 /node_modules
 frontend/src/components/home/images_for_ex/
+frontend/public/*.jpg
