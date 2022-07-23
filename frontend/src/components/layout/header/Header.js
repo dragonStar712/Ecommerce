@@ -1,6 +1,8 @@
 import React from 'react'
 import {ReactNavbar} from "overlay-navbar"
 // import logo from "../../../images.logo.png"
+// import { FaBeer } from 'react-icons/fa';
+// import { IoSearch } from "react-icons/io5";
 
 const options ={
   burgerColor : "#eb4034",
@@ -11,11 +13,11 @@ const options ={
   logoHoverSize : "10px",
   logoHoverColor : "#eb4034",
   link1Text : "Home",
-  link2Text : "Product",
+  link2Text : "Products",
   link3Text : "Contact",
   link4Text : "About",
   link1Url : "/",
-  link2Url : "/product",
+  link2Url : "/products",
   link3Url : "/contact",
   link4Url : "/about",
   link1Size : "1.3vmax",
@@ -37,9 +39,7 @@ const options ={
 
 const Header = () => {
   return (
-    <>
         <ReactNavbar {...options}/>
-    </>
     )
 }
 

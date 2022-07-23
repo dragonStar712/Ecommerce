@@ -20,7 +20,7 @@ exports.createProduct = catchasyncErrors(async(req, res, next) =>{
 // get all product
 exports.getAllProducts = catchasyncErrors(async(req, res, next)=>{
 
-    // return next(new ErrorHandler("this is a sample error", 500));
+    // return next(new ErrorHandler("thisf error", 500));
 
     const resultPerPage = 8;
     const productsCount = await Product.countDocuments();
@@ -28,14 +28,20 @@ exports.getAllProducts = catchasyncErrors(async(req, res, next)=>{
     const apiFeature = new apiFeatures(Product.find(), req.query)
     .search()
     .filter()
-    .pagination(resultPerPage);  // http://localhost:4000/api/v1/products/keyword=samosa
-                                                     // req.query.keyword = samosa
-    const products = await apiFeature.query;
+    .pagination(resultPerPage);
+
+    let products = await apiFeature.query;
+    // console.log(products);
+    // let filteredProductsCount = products.length;
+
+    // products = await apiFeature.query;
 
     res.status(200).json({
         success : true,
         products,
         productsCount,
+        resultPerPage,
+        // filteredProductsCount,
     });
 });
 
@@ -76,6 +82,9 @@ exports.deleteProduct = catchasyncErrors(async(req, res, next) =>{
 
 // get product details 
 exports.getProductDetails = catchasyncErrors(async(req, res, next) =>{
+    
+    // return next(new ErrorHandler("thisf error", 500));
+
     const product = await Product.findById(req.params.id);
 
     if(!product){
@@ -101,7 +110,7 @@ exports.createProductReview = catchasyncErrors(async(req, res, next) => {
         comment,
     }
 
-    console.log(review);
+    // console.log(review);
     const product = await Product.findById(productId);
 
     const isReviewed = product.reviews.find( (rev) => rev.user.toString() === req.user._id.toString());

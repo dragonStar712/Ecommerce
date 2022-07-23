@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import { CgMouse } from "react-icons/cg";
 import "./home.css"
-import Product from "./Product.js"
+import Product from "./ProductCard.js"
 import MetaData from '../layout/metaData';
-import {getProduct} from '../../actions/productAction';
+import {clearErrors, getProduct} from '../../actions/productAction';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from "../layout/loader/Loader"
 import {useAlert} from "react-alert"
@@ -25,9 +25,12 @@ const Home = () => {
     (state) => state.products
   );
 
+    // console.log(error);       // error -> unefined !!!!!!111
+
   useEffect(()=>{
     if(error){
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearErrors());
     }
     dispatch(getProduct());
   }, [dispatch, error, alert]);
@@ -45,6 +48,7 @@ const Home = () => {
                           <button>
                               Scroll <CgMouse/>
                           </button>
+                         {/* <button onClick={alert.error("hey this is error")}></button> */}
                       </a>
                     </div>
               

@@ -10,11 +10,10 @@ class apiFeatures{
                 $regex : this.queryStr.keyword,
                 $options : "i",
 
-            }
+            },
      } : {};
 
      this.query = this.query.find({...keyword});
-
      return this;
     }
 
@@ -26,7 +25,7 @@ class apiFeatures{
 
         const removeFields = ["keyword","page","limit"];
 
-        removeFields.forEach(key=>delete queryCopy[key]);
+        removeFields.forEach((key)=>delete queryCopy[key]);
 
 
         // filter for prices and ratings
