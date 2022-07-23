@@ -1,3 +1,5 @@
+
+
 .productsHeading {
   margin: 2vmax auto;
   width: 15vw;
@@ -76,7 +78,6 @@
 .categoryBox {
   padding: 0%;
 }
-
 .category-link {
   list-style: none;
   color: rgba(0, 0, 0, 0.61);
@@ -106,4 +107,8 @@
   .category-link {
     font: 400 1.8vmax "Roboto";
   }
+}
+
+.widthset{
+  width: 21vmax;
 }

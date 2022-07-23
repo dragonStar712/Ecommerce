@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import Carousel from "react-material-ui-carousel";
+// import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, getProductDetails } from '../../actions/productAction';
@@ -8,6 +8,8 @@ import ReactStars from 'react-rating-stars-component';
 import ReviewCard from "./ReviewCard.js"
 import Loader from '../layout/loader/Loader';
 import { useAlert } from 'react-alert';
+import MetaData from '../layout/MetaData';
+
 
 const ProductDetails = () => {
 
@@ -46,6 +48,7 @@ const ProductDetails = () => {
         
             ) : (
             <Fragment>
+                <MetaData title={`${product.name} ... ECOMMERECE`}></MetaData>
         <div className='ProductDetails'>
                 <div>
                     {/* <Carousel>                                           ///////////////////// carousel not working*/}

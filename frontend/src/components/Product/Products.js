@@ -6,17 +6,32 @@ import Loader from '../layout/loader/Loader';
 import ProductCard from '../home/ProductCard';
 import { useParams } from 'react-router-dom';
 import Pagination from "react-js-pagination";       
-// import { Typography } from '@mui/material';
-// import Slider from '@mui/material/Slider';       price filtere not working!!
+import { Typography } from '@mui/material';
+import Slider from '@mui/material/Slider';       //price filtere not working!!
+import { useAlert } from "react-alert"
+import MetaData from "../layout/MetaData";
+
+const categories = [
+    "Laptop",
+    "Footwear",
+    "Bottom",
+    "Tops",
+    "Attire",
+    "Camera",
+    "SmartPhones",
+  ];
+  
 
 const Products = () => {
 
+    const alert = useAlert();
     const dispatch = useDispatch();
     const {keyword} = useParams();
-
     const [currentPage, setCurrentPage] = useState(1);
     // const [price, setPrice] = useState([0, 25000]);
-
+    const [category, setCategory ] = useState("");
+    const [ratings, setRatings] = useState(0);
+    
     const { 
         loading, 
         error, 
@@ -42,17 +57,20 @@ const Products = () => {
             dispatch(clearErrors());
           }
         // dispatch(getProduct(keyword,currentPage,price));
-        dispatch(getProduct(keyword,currentPage));
-    }, [dispatch, keyword,currentPage, error]);
+        console.log(category);
+        dispatch(getProduct(category, keyword,currentPage, ratings, error));
+    }, [dispatch, category, keyword,currentPage, ratings, alert, error]);
     // }, [dispatch, keyword,currentPage, price, error]);
 
     // let count = filteredProductsCount;
-    // console.log(filteredProductsCount);
+    console.log(category);
     return (
     <Fragment>
         {loading? (<Loader/>) : (
         
         <Fragment>
+
+            <MetaData title="PRODUCTS -- ECOMMERCE" />
             <h2 className='productsHeading'>Products</h2>
             
             <div className='products'>
@@ -62,32 +80,45 @@ const Products = () => {
                 })}
             </div>
 
+                {/* {keyword && */}
+                <div>
                 {/* <div className='filterBox'>
-                    <Typography>Price</Typography>
-                    <Slider
-                        value={price}
-                        onChange={priceHandler}
-                        valueLabelDisplay="on"
-                        aria-labelledby="range-slider"
-                        min={0}
-                        max={25000}
-                    />
+                     <Typography>Price</Typography>
+                     <Slider
+                         value={price}
+                         onChange={priceHandler}
+                         valueLabelDisplay="on"
+                         aria-labelledby="range-slider"
+                         min={0}
+                         max={25000}
+                     />
                 
-                </div> */}
+                 </div>  */}
+            <div className='widthset'>
 
-                {/* <div className='filterBox'>
-                    <Typography>Categories</Typography>
-                    <Slider
-                        value={price}
-                        onChange={priceHandler}
-                        valueLabelDisplay="on"
-                        aria-labelledby="range-slider"
-                        min={0}
-                        max={25000}
-                    />
-                
-                </div> */}
+            <Typography>Categories</Typography>
+            <ul className="categoryBox">
+              {categories.map((category) =>  <li className="category-link" key={category} onClick={() => setCategory(category)}> {category} </li>)}
+            </ul>
+            </div>
 
+            <div className='widthset'>
+            <fieldset>
+              <Typography component="legend">Ratings Above</Typography>
+              <Slider
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
+              />
+            </fieldset>
+            </div>
+            </div>
+            {/* } */}
 
                 {resultPerPage<productsCount &&
                 <div className='paginationBox'>

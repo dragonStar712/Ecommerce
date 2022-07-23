@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { CgMouse } from "react-icons/cg";
 import "./home.css"
 import Product from "./ProductCard.js"
-import MetaData from '../layout/metaData';
+import MetaData from '../layout/MetaData';
 import {clearErrors, getProduct} from '../../actions/productAction';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from "../layout/loader/Loader"
@@ -21,7 +21,7 @@ const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
 
-  const { loading, error, products, productsCount} = useSelector(
+  const { loading, error, products} = useSelector(
     (state) => state.products
   );
 
