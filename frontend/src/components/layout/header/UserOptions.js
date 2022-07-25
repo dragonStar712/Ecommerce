@@ -7,9 +7,10 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp"
 import ListAltIcon from "@mui/icons-material/ListAlt"
 import { useNavigate } from 'react-router-dom'
 import {useAlert} from "react-alert"
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {logout} from "../../../actions/userAction";
-import ProfilePng from "../../../images/profilePng.jpg";
+import ProfilePng from "./profilePng.jpg";
+
 
 const UserOptions = ({ user }) => {
  
@@ -49,7 +50,7 @@ const UserOptions = ({ user }) => {
 
     return (
     <Fragment>
-    <Backdrop open={open} style={{ zIndex: "10" }} />
+    <Backdrop open={open} style={{ zIndex: "10" }} />     {/* to darken background when hovered over profile pic*/}
     <SpeedDial
       ariaLabel="SpeedDial tooltip example"
       onClose={() => setOpen(false)}
@@ -62,6 +63,7 @@ const UserOptions = ({ user }) => {
         <img
           className="speedDialIcon"
           src={user.avatar.url ? user.avatar.url : ProfilePng}
+          // src={user.avatar.url ? user.avatar.url : process.env.PUBLIC_URL+"images/logo.png"}
           alt="Profile"
         />
       }
