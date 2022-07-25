@@ -15,6 +15,7 @@ import UserOptions from './components/layout/header/UserOptions.js'
 import { useSelector } from 'react-redux';
 import Profile from "./components/User/Profile.js"
 import ProtectedRoute from './components/Routes/ProtectedRoutes';
+import ProtectedRoute1 from './components/Routes/ProtectedRoutes1.js';
 
 
 function App() {
@@ -39,21 +40,23 @@ function App() {
       <Header/>
       {isAuthenticated && <UserOptions user={user} />}
 
-        {/* <Routes path='/*' element={<ProtectedRoute path="/account" element={<Profile/>}/>}/> */}
-      <Routes>
+       <Routes>
         <Route path='/' element={<Home/>}/>
         
         {/* <Route path='/*' element={
           <ProtectedRoute path="/account" element={<Profile/>}/>
         }> 
           </Route> */}
-       
-        <Route path='/account' element={<ProtectedRoute/>}/>
+        {/* <Route path='/account' element={<ProtectedRoute/>}/> */}
+        <Route path='/account' element={<ProtectedRoute element={Profile}/>}/>
+        <Route path='/me/update' element={<ProtectedRoute1/>}/>
+        {/* <Route path='/me/update' element={<ProtectedRoute1/>}/> */}
         <Route path='/product/:id' element={<ProductDetails/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/products/:keyword' element={<Products/>}/>
         <Route path='/search' element={<Search/>}/>
         <Route path='/login' element={<LoginSignUp/>}/>
+          
        </Routes>
       <Footer/>
    </Router>

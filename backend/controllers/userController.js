@@ -219,7 +219,7 @@ exports.updateProfile = catchasyncError(async (req, res, next)=>{
     });
 
     res.status(200).json({
-        succes : true,
+        success : true,
     });
 })
 
