@@ -33,7 +33,7 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    history.push("/login?redirect=shipping");
+    history("/login?redirect=shipping");
   };
 
   return (
@@ -83,7 +83,7 @@ const Cart = () => {
                     item.price * item.quantity
                   }`}</p>
                 </div>
-              ))}
+                ))}
 
             <div className="cartGrossProfit">
               <div></div>
