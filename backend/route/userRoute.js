@@ -9,7 +9,7 @@ router.route("/login").post(loginUser);
 
 router.route("/password/forgot").post(forgotPasword);
 
-router.route("/password/reset/:token").put(resetPassword);
+router.route("/password/reset/:token").put(resetPassword);              ////// currently not functioning !!!!
 
 router.route("/logout").get(logout);
 

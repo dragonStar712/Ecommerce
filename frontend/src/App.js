@@ -16,7 +16,11 @@ import { useSelector } from 'react-redux';
 import Profile from "./components/User/Profile.js"
 import ProtectedRoute from './components/Routes/ProtectedRoutes';
 import ProtectedRoute1 from './components/Routes/ProtectedRoutes1.js';
-
+import ProtectedRoutes2 from './components/Routes/ProtectedRoutes2.js';
+// import ProtectedRoutes3 from './components/Routes/ProtectedRoutes3.js';
+import ForgotPassword from "./components/User/ForgotPassword.js"
+import ResetPassword from "./components/User/ResetPassword.js"
+import Cart from "./components/cart/Cart.js"
 
 function App() {
 
@@ -56,7 +60,11 @@ function App() {
         <Route path='/products/:keyword' element={<Products/>}/>
         <Route path='/search' element={<Search/>}/>
         <Route path='/login' element={<LoginSignUp/>}/>
-          
+        <Route path='/password/update' element={<ProtectedRoutes2/>}/>
+        <Route path='/password/forgot' element={<ForgotPassword/>}/>
+        <Route path='/password/reset/:token' element={<ResetPassword/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        
        </Routes>
       <Footer/>
    </Router>

@@ -17,7 +17,7 @@ export const getProduct = (category, keyword="", currentPage=1, ratings=0)=> asy
         
         // let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
         let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&ratings[gte]=${ratings}`;
-        console.log(category);
+        // console.log(category);
         if(category){
             link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}&ratings[gte]=${ratings}`;
         }
