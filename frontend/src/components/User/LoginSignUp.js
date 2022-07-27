@@ -8,12 +8,13 @@ import FaceIcon from "@mui/icons-material/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import {useNavigate } from "react-router-dom"
+import {useNavigate , useLocation } from "react-router-dom"
 
 const LoginSignUp = () => {
 
   const alert = useAlert();
   let history = useNavigate();
+  let location = useLocation();
   const dispatch = useDispatch();
   const loginTab = useRef(null);
   const registerTab = useRef(null);
@@ -69,6 +70,8 @@ const LoginSignUp = () => {
     }
   };
 
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
+  // console.log(location)
 
   useEffect(() => {
     if(error){
@@ -76,10 +79,10 @@ const LoginSignUp = () => {
       dispatch(clearErrors());
     }
   if(isAuthenticated){
-    history(`/account`);
+    history(redirect);
   }
 
-  },[dispatch, error, alert, history, isAuthenticated]);
+  },[dispatch, error, alert, history, isAuthenticated, redirect, location]);
 
   const  switchTabs = (e, tab) =>{        /// login and register ke niche jo line hai usko move krne ke liye to show active part
     if (tab === "login") {

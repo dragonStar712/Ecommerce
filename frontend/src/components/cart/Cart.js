@@ -7,6 +7,7 @@ import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { Link } from "react-router-dom";
 import { Typography } from '@mui/material';
+import MetaData from "../layout/MetaData";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    history("/login?redirect=shipping");
+    history("/login?redirect=shipping");    // login hoga to hi!!
   };
 
   return (
@@ -47,6 +48,7 @@ const Cart = () => {
         </div>
       ) : (
         <Fragment>
+          <MetaData title={`Cart`} />
           <div className="cartPage">
             <div className="cartHeader">
               <p>Product</p>

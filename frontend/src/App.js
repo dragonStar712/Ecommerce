@@ -3,7 +3,7 @@ import Header from "./components/layout/header/Header"
 import Footer from "./components/layout/footer/Footer"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import webfont from "webfontloader"
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Home from "./components/home/home.js"
 import ProductDetails from "./components/Product/ProductDetails.js"
 import Products from "./components/Product/Products.js" 
@@ -17,15 +17,25 @@ import Profile from "./components/User/Profile.js"
 import ProtectedRoute from './components/Routes/ProtectedRoutes';
 import ProtectedRoute1 from './components/Routes/ProtectedRoutes1.js';
 import ProtectedRoutes2 from './components/Routes/ProtectedRoutes2.js';
-// import ProtectedRoutes3 from './components/Routes/ProtectedRoutes3.js';
+import ProtectedRoutes3 from './components/Routes/ProtectedRoutes3.js';
+import ProtectedRoutes4 from './components/Routes/ProtectedRoutes4.js';
+import ProtectedRoutes5 from './components/Routes/ProtectedRoutes5.js';
 import ForgotPassword from "./components/User/ForgotPassword.js"
 import ResetPassword from "./components/User/ResetPassword.js"
 import Cart from "./components/cart/Cart.js"
+import axios from 'axios';
 
 function App() {
 
 
   const {isAuthenticated, user} = useSelector(state => state.user);
+
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const {data} = await axios.get("/api/v1/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
+  }
 
   React.useEffect(()=>{
     webfont.load({
@@ -34,7 +44,7 @@ function App() {
       }
     })
     store.dispatch(loadUser());
-
+    getStripeApiKey();
   },[]);
   
 
@@ -64,7 +74,17 @@ function App() {
         <Route path='/password/forgot' element={<ForgotPassword/>}/>
         <Route path='/password/reset/:token' element={<ResetPassword/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/login/shipping' element={<ProtectedRoutes3/>}/>
+        {/* <Route path='/shipping' element={<ProtectedRoutes3/>}/>     still not working 1!!!        */}
+        <Route path='/order/confirm' element={<ProtectedRoutes5/>}/>       
         
+        {/* <Elements stripe={loadStripe(stripeApiKey)}> */}
+
+          <Route path='/process/payment' element={<ProtectedRoutes4/>}/>
+        
+        {/* </Elements> */}
+       
+       
        </Routes>
       <Footer/>
    </Router>

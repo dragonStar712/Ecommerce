@@ -32,7 +32,7 @@ const ProductDetails = () => {
 
     const decreaseQuantity = () =>{
         if(1 >= quantity)   return;
-        console.log("!2");
+        // console.log("!2");
         const qty = quantity - 1;
         setQuantity(qty);
     }
@@ -42,7 +42,7 @@ const ProductDetails = () => {
         alert.success("Items added to Cart");
     }
 
-    console.log(localStorage.getItem("cartItems"));
+    // console.log(localStorage.getItem("cartItems"));
     useEffect(()=>{
         if(error){
             alert.error(error);
@@ -69,7 +69,7 @@ const ProductDetails = () => {
             ) : (
             <Fragment>
                 <MetaData title={`${product.name} ... ECOMMERECE`}></MetaData>
-        <div className='ProductDetails'>
+                <div className='ProductDetails'>
                 <div>
                     {/* <Carousel>                                           ///////////////////// carousel not working*/}
                         {
