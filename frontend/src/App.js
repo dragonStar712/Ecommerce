@@ -20,6 +20,7 @@ import ProtectedRoutes2 from './components/Routes/ProtectedRoutes2.js';
 import ProtectedRoutes3 from './components/Routes/ProtectedRoutes3.js';
 import ProtectedRoutes4 from './components/Routes/ProtectedRoutes4.js';
 import ProtectedRoutes5 from './components/Routes/ProtectedRoutes5.js';
+import ProtectedRoutes6 from './components/Routes/ProtectedRoutes6.js';
 import ForgotPassword from "./components/User/ForgotPassword.js"
 import ResetPassword from "./components/User/ResetPassword.js"
 import Cart from "./components/cart/Cart.js"
@@ -81,6 +82,7 @@ function App() {
         {/* <Elements stripe={loadStripe(stripeApiKey)}> */}
 
           <Route path='/process/payment' element={<ProtectedRoutes4/>}/>
+          <Route path='/success' element={<ProtectedRoutes6/>}/>
         
         {/* </Elements> */}
        

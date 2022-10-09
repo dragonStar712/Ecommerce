@@ -14,8 +14,8 @@ exports.newOrder = catchasyncErrors(async(req, res, next) => {
         shippingPrice,
         totalPrice} = req.body;
 
-    console.log("sgfgsgfgsdfg");
-    
+    console.log(req.body);
+
     const order = await Order.create({
         shippingInfo,
         orderItems,
@@ -27,9 +27,7 @@ exports.newOrder = catchasyncErrors(async(req, res, next) => {
         paidAt : Date.now(),
         user : req.user._id,
     });
-
-    console.log("sgfgsgfgsdfg");
-
+    console.log(order);
     res.status(200).json({
         success : true,
         order,

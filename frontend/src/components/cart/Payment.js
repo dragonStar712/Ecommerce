@@ -32,15 +32,16 @@ const Payment = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
-    console.log(error);
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
   };
 
+  shippingInfo.phoneNo = Number(shippingInfo.phoneNo);
+
   const order = {
     shippingInfo,
     orderItems: cartItems,
-    itemsPrice: orderInfo.subtotal,
+    itemPrice: orderInfo.subtotal,
     taxPrice: orderInfo.tax,
     shippingPrice: orderInfo.shippingCharges,
     totalPrice: orderInfo.totalPrice,
@@ -104,7 +105,7 @@ const Payment = () => {
       }
     } catch (error) {
       payBtn.current.disabled = false;
-      alert.error(error.response.data.message);
+      alert.error(error.response.data.error);
     }
   };
 

@@ -38,7 +38,7 @@ import {
     } catch (error) {
       dispatch({
         type: CREATE_ORDER_FAIL,
-        payload: error.response.data.message,
+        payload: error.response.data['error'],
       });
     }
   };
@@ -54,7 +54,7 @@ import {
     } catch (error) {
       dispatch({
         type: MY_ORDERS_FAIL,
-        payload: error.response.data.message,
+        payload: error.response.data['error'],
       });
     }
   };
@@ -70,7 +70,7 @@ import {
     } catch (error) {
       dispatch({
         type: ALL_ORDERS_FAIL,
-        payload: error.response.data.message,
+        payload: error.response.data['error'],
       });
     }
   };
@@ -95,7 +95,7 @@ import {
     } catch (error) {
       dispatch({
         type: UPDATE_ORDER_FAIL,
-        payload: error.response.data.message,
+        payload: error.response.data['error'],
       });
     }
   };
@@ -111,7 +111,7 @@ import {
     } catch (error) {
       dispatch({
         type: DELETE_ORDER_FAIL,
-        payload: error.response.data.message,
+        payload: error.response.data['error'],
       });
     }
   };
@@ -127,7 +127,7 @@ import {
     } catch (error) {
       dispatch({
         type: ORDER_DETAILS_FAIL,
-        payload: error.response.data.message,
+        payload: error.response.data['error'],
       });
     }
   };

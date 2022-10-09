@@ -25,7 +25,7 @@ import {
             shippingInfo : localStorage.getItem("shippingInfo") ? JSON.parse(localStorage.getItem("shippingInfo")) : [],
         },
     };
-      
+    //   console.log(localStorage.getItem("shippingInfo"));
 const store = configureStore({
     reducer : {
         products : productReducer,
